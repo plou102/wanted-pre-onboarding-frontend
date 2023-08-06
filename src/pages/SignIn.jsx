@@ -5,16 +5,18 @@ import { styled } from "styled-components";
 
 function SignIn() {
   const navigate = useNavigate();
-  const isToken = window.localStorage.getItem("token");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCount, setPasswordCount] = useState(0);
 
   useEffect(() => {
+    const isToken = window.localStorage.getItem("token");
+
     if (isToken !== null) {
       navigate("/todo");
     }
-  }, [isToken, navigate]);
+  }, [navigate]);
 
   function onEmailHandler(e) {
     setEmail(e.target.value);

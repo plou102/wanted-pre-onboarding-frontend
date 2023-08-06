@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 function TodoList() {
   const [listTitle, setListTitle] = useState("");
   const [listData, setListData] = useState([]);
-  const isToken = window.localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
+      const isToken = window.localStorage.getItem("token");
+
       if (isToken === null) {
         navigate("/signin");
       } else {
@@ -19,7 +20,7 @@ function TodoList() {
         setListData(list);
       }
     })();
-  }, [isToken, listData, navigate]);
+  }, [listData, navigate]);
 
   function InputHandler(e) {
     setListTitle(e.target.value);
