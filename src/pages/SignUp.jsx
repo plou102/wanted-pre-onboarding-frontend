@@ -15,7 +15,7 @@ function SignUp() {
     if (isToken !== null) {
       navigate("/todo");
     }
-  }, []);
+  });
 
   function onEmailHandler(e) {
     setEmail(e.target.value);

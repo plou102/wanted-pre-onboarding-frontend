@@ -14,7 +14,7 @@ function TodoList() {
     if (isToken === null) {
       navigate("/signin");
     }
-  }, []);
+  });
 
   useEffect(() => {
     (async () => {
