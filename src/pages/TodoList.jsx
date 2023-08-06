@@ -8,14 +8,13 @@ function TodoList() {
   const [listTitle, setListTitle] = useState("");
   const [listData, setListData] = useState([]);
   const navigate = useNavigate();
+  const isToken = window.localStorage.getItem("token");
 
   useEffect(() => {
-    const isToken = window.localStorage.getItem("token");
-
     if (isToken === null) {
       navigate("/signin");
     }
-  }, [navigate]);
+  }, [isToken, navigate]);
 
   useEffect(() => {
     (async () => {
