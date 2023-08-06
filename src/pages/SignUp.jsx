@@ -29,8 +29,10 @@ function SignUp() {
   async function signUpHandler(data) {
     const isSignUp = await postSignUp(data);
 
-    if (isSignUp) {
-      navigate("/login");
+    console.log(isSignUp);
+
+    if (isSignUp === "") {
+      navigate("/signin");
     }
   }
 
