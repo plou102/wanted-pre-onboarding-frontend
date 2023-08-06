@@ -10,17 +10,19 @@ function TodoList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => {
-      const isToken = window.localStorage.getItem("token");
+    const isToken = window.localStorage.getItem("token");
 
-      if (isToken === null) {
-        navigate("/signin");
-      } else {
-        const list = await getTodo();
-        setListData(list);
-      }
+    if (isToken === null) {
+      navigate("/signin");
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    (async () => {
+      const list = await getTodo();
+      setListData(list);
     })();
-  }, [listData, navigate]);
+  }, [listData]);
 
   function InputHandler(e) {
     setListTitle(e.target.value);
