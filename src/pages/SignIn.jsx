@@ -1,13 +1,20 @@
 import { postSignIn } from "../api/requests";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 function SignIn() {
   const navigate = useNavigate();
+  const isToken = window.localStorage.getItem("token");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCount, setPasswordCount] = useState(0);
+
+  useEffect(() => {
+    if (isToken !== null) {
+      navigate("/todo");
+    }
+  }, []);
 
   function onEmailHandler(e) {
     setEmail(e.target.value);

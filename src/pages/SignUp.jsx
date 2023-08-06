@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { AiOutlineWarning } from "react-icons/ai";
 import { postSignUp } from "../api/requests";
@@ -6,9 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const navigate = useNavigate();
+  const isToken = window.localStorage.getItem("token");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCount, setPasswordCount] = useState(0);
+
+  useEffect(() => {
+    if (isToken !== null) {
+      navigate("/todo");
+    }
+  }, []);
 
   function onEmailHandler(e) {
     setEmail(e.target.value);

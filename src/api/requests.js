@@ -40,3 +40,23 @@ export function postSignUp(data) {
 export function postSignIn(data) {
   return requestPost(PATH.SIGNIN, defaultInstance, data);
 }
+
+// todo list 추가
+export function postAddTodo(data) {
+  return requestPost(PATH.TODO, tokenInstance, data);
+}
+
+// todo list 불러오기
+export function getTodo() {
+  return requestGet(PATH.TODO, tokenInstance);
+}
+
+// todo list 삭제
+export function deleteTodo(id) {
+  return requestDelete(`${PATH.TODO}/${id}`, tokenInstance);
+}
+
+// todo list 수정
+export function updateTodo(id, data) {
+  return requestPut(`${PATH.TODO}/${id}`, tokenInstance, data);
+}
