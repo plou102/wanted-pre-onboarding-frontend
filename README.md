@@ -23,7 +23,7 @@ $ npm start
 
 ![todo-video](https://github.com/plou102/wanted-pre-onboarding-frontend/assets/107393773/25756403-969d-467e-8c30-78a3d8f1dec9)
 
-<br /
+<br />
 
 ### 🔗 배포 링크
 
