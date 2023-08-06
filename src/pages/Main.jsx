@@ -31,13 +31,13 @@ export default Main;
 
 const MainContent = styled.div`
   text-align: center;
-  height: 70%;
+  height: 50%;
 `;
 
 const Title = styled.h1`
   color: #000069;
-  margin-top: 20%;
-  margin-bottom: 45%;
+  margin-top: 30%;
+  margin-bottom: 10%;
 `;
 
 const ButtonContent = styled.div`
@@ -45,11 +45,12 @@ const ButtonContent = styled.div`
   height: 30%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 const SignIn = styled.button`
   width: 40%;
-  height: 30%;
+  height: 40%;
   margin: auto;
   background-color: transparent;
   border: 1px solid #000080;
@@ -63,7 +64,7 @@ const SignIn = styled.button`
 
 const SignUp = styled.button`
   width: 40%;
-  height: 30%;
+  height: 40%;
   margin: auto;
   background-color: transparent;
   border: 1px solid #000080;
