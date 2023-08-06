@@ -60,7 +60,10 @@ function List({ list }) {
         </UpdateBtn>
         <DeleteBtn
           data-testid="cancel-buttont"
-          onClick={() => setUpdateMode(false)}
+          onClick={() => {
+            setUpdateMode(false);
+            setTodoTitle(list.todo);
+          }}
         >
           취소
         </DeleteBtn>
