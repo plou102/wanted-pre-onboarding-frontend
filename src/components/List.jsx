@@ -10,7 +10,7 @@ function List({ list }) {
   useEffect(() => {
     setCheckbox(list.isCompleted);
     setTodoTitle(list.todo);
-  }, []);
+  }, [list.isCompleted, list.todo]);
 
   async function CheckboxHandler(e) {
     setCheckbox(e.target.checked);
