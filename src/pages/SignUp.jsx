@@ -108,7 +108,7 @@ const InputContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 15%;
+  margin-bottom: 8%;
 `;
 
 const EmailInput = styled.input`
