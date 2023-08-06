@@ -9,14 +9,13 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCount, setPasswordCount] = useState(0);
+  const isToken = window.localStorage.getItem("token");
 
   useEffect(() => {
-    const isToken = window.localStorage.getItem("token");
-
     if (isToken !== null) {
       navigate("/todo");
     }
-  }, [navigate]);
+  }, [isToken, navigate]);
 
   function onEmailHandler(e) {
     setEmail(e.target.value);
