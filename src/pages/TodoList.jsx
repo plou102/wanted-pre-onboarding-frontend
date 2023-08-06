@@ -11,17 +11,15 @@ function TodoList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isToken === null) {
-      navigate("/signin");
-    }
-  });
-
-  useEffect(() => {
     (async () => {
-      const list = await getTodo();
-      setListData(list);
+      if (isToken === null) {
+        navigate("/signin");
+      } else {
+        const list = await getTodo();
+        setListData(list);
+      }
     })();
-  }, [listData]);
+  }, [isToken, listData, navigate]);
 
   function InputHandler(e) {
     setListTitle(e.target.value);

@@ -5,34 +5,46 @@ import { styled } from "styled-components";
 function Main() {
   const navigate = useNavigate();
   return (
-    <ButtonContent>
-      <SignIn
-        onClick={() => {
-          navigate("/signin");
-        }}
-      >
-        로그인
-      </SignIn>
-      <SignUp
-        onClick={() => {
-          navigate("/signup");
-        }}
-      >
-        회원가입
-      </SignUp>
-    </ButtonContent>
+    <MainContent>
+      <Title>Todo List</Title>
+      <ButtonContent>
+        <SignIn
+          onClick={() => {
+            navigate("/signin");
+          }}
+        >
+          로그인
+        </SignIn>
+        <SignUp
+          onClick={() => {
+            navigate("/signup");
+          }}
+        >
+          회원가입
+        </SignUp>
+      </ButtonContent>
+    </MainContent>
   );
 }
 
 export default Main;
 
+const MainContent = styled.div`
+  text-align: center;
+  height: 70%;
+`;
+
+const Title = styled.h1`
+  color: #000069;
+  margin-top: 20%;
+  margin-bottom: 45%;
+`;
+
 const ButtonContent = styled.div`
-  position: relative;
   width: 100%;
-  height: 20%;
+  height: 30%;
   display: flex;
   flex-direction: column;
-  top: 55%;
 `;
 
 const SignIn = styled.button`
