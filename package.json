@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "lint": "eslint --cache"
   },
   "eslintConfig": {
     "extends": [
