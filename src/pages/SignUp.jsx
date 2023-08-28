@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { styled } from "styled-components";
-import { AiOutlineWarning } from "react-icons/ai";
-import { postSignUp } from "../api/requests";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { styled } from 'styled-components';
+import { AiOutlineWarning } from 'react-icons/ai';
+import { postSignUp } from '../api/requests';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordCount, setPasswordCount] = useState(0);
-  const isToken = window.localStorage.getItem("token");
+  const isToken = window.localStorage.getItem('token');
 
   useEffect(() => {
     if (isToken !== null) {
-      navigate("/todo");
+      navigate('/todo');
     }
   }, [isToken, navigate]);
 
@@ -31,8 +31,8 @@ function SignUp() {
 
     console.log(isSignUp);
 
-    if (isSignUp === "") {
-      navigate("/signin");
+    if (isSignUp === '') {
+      navigate('/signin');
     }
   }
 
@@ -65,7 +65,7 @@ function SignUp() {
 
       <SignUpBtn
         data-testid="signup-button"
-        disabled={email.includes("@") && passwordCount >= 8 ? false : true}
+        disabled={email.includes('@') && passwordCount >= 8 ? false : true}
         onClick={() => {
           const data = {
             email: email,
@@ -136,7 +136,7 @@ const SignUpBtn = styled.button`
   margin: auto;
   border-radius: 5px;
 
-  ${(props) =>
+  ${props =>
     props.disabled === false &&
     `
   color: #000069;

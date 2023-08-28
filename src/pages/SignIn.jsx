@@ -1,19 +1,19 @@
-import { postSignIn } from "../api/requests";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { styled } from "styled-components";
+import { postSignIn } from '../api/requests';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 function SignIn() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordCount, setPasswordCount] = useState(0);
-  const isToken = window.localStorage.getItem("token");
+  const isToken = window.localStorage.getItem('token');
 
   useEffect(() => {
     if (isToken !== null) {
-      navigate("/todo");
+      navigate('/todo');
     }
   }, [isToken, navigate]);
 
@@ -29,9 +29,9 @@ function SignIn() {
   async function signInHandler(data) {
     const token = await postSignIn(data);
 
-    window.localStorage.setItem("token", `${token.access_token}`);
+    window.localStorage.setItem('token', `${token.access_token}`);
     if (token) {
-      navigate("/todo");
+      navigate('/todo');
     }
   }
 
@@ -56,7 +56,7 @@ function SignIn() {
 
       <SignInBtn
         data-testid="signin-button"
-        disabled={email.includes("@") && passwordCount >= 8 ? false : true}
+        disabled={email.includes('@') && passwordCount >= 8 ? false : true}
         onClick={() => {
           const data = {
             email: email,
@@ -119,7 +119,7 @@ const SignInBtn = styled.button`
   margin: auto;
   border-radius: 5px;
 
-  ${(props) =>
+  ${props =>
     props.disabled === false &&
     `
   color: #000069;

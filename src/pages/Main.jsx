@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { styled } from "styled-components";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 function Main() {
   const navigate = useNavigate();
@@ -10,14 +10,14 @@ function Main() {
       <ButtonContent>
         <SignIn
           onClick={() => {
-            navigate("/signin");
+            navigate('/signin');
           }}
         >
           로그인
         </SignIn>
         <SignUp
           onClick={() => {
-            navigate("/signup");
+            navigate('/signup');
           }}
         >
           회원가입

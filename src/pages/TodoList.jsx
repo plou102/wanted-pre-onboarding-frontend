@@ -1,18 +1,18 @@
-import List from "../components/List";
-import { getTodo, postAddTodo } from "../api/requests";
-import React, { useEffect, useState } from "react";
-import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import List from '../components/List';
+import { getTodo, postAddTodo } from '../api/requests';
+import React, { useEffect, useState } from 'react';
+import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function TodoList() {
-  const [listTitle, setListTitle] = useState("");
+  const [listTitle, setListTitle] = useState('');
   const [listData, setListData] = useState([]);
   const navigate = useNavigate();
-  const isToken = window.localStorage.getItem("token");
+  const isToken = window.localStorage.getItem('token');
 
   useEffect(() => {
     if (isToken === null) {
-      navigate("/signin");
+      navigate('/signin');
     }
   }, [isToken, navigate]);
 
@@ -30,7 +30,7 @@ function TodoList() {
   async function AddTodoHandler(data) {
     const todo = await postAddTodo(data);
     if (todo) {
-      setListTitle("");
+      setListTitle('');
     }
   }
 
@@ -61,7 +61,7 @@ function TodoList() {
       </InputContent>
 
       <ListContent>
-        {listData.map((list) => {
+        {listData.map(list => {
           return <List list={list} key={list.id} />;
         })}
       </ListContent>

@@ -1,11 +1,11 @@
-import { deleteTodo, updateTodo } from "../api/requests";
-import React, { useEffect, useState } from "react";
-import { styled } from "styled-components";
+import { deleteTodo, updateTodo } from '../api/requests';
+import React, { useEffect, useState } from 'react';
+import { styled } from 'styled-components';
 
 function List({ list }) {
   const [checkbox, setCheckbox] = useState(false);
   const [updateMode, setUpdateMode] = useState(false);
-  const [todoTitle, setTodoTitle] = useState("");
+  const [todoTitle, setTodoTitle] = useState('');
 
   useEffect(() => {
     setCheckbox(list.isCompleted);
@@ -43,16 +43,12 @@ function List({ list }) {
   if (updateMode) {
     return (
       <ListContent>
-        <ListCheck
-          type="checkbox"
-          checked={checkbox}
-          onChange={(e) => CheckboxHandler(e)}
-        />
+        <ListCheck type="checkbox" checked={checkbox} onChange={e => CheckboxHandler(e)} />
         <UpdateInput
           data-testid="modify-input"
           type="text"
           value={todoTitle}
-          onChange={(e) => ModifyInputHandler(e)}
+          onChange={e => ModifyInputHandler(e)}
         />
 
         <UpdateBtn data-testid="submit-button" onClick={() => SubmitHandler()}>
@@ -73,17 +69,10 @@ function List({ list }) {
 
   return (
     <ListContent>
-      <ListCheck
-        type="checkbox"
-        checked={checkbox}
-        onChange={(e) => CheckboxHandler(e)}
-      />
+      <ListCheck type="checkbox" checked={checkbox} onChange={e => CheckboxHandler(e)} />
       <ListTitle>{list.todo}</ListTitle>
 
-      <UpdateBtn
-        data-testid="modify-button"
-        onClick={() => setUpdateMode(true)}
-      >
+      <UpdateBtn data-testid="modify-button" onClick={() => setUpdateMode(true)}>
         수정
       </UpdateBtn>
       <DeleteBtn data-testid="delete-buttont" onClick={() => DeleteHandler()}>

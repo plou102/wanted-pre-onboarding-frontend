@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 function getHeader(option) {
   const header = {
-    "content-type": "application/json",
+    'content-type': 'application/json',
   };
   if (option) Object.assign(header, option);
   return header;
@@ -18,8 +18,8 @@ function axiosApi(url, options) {
 }
 
 function axiosTokenApi(url, options) {
-  const token = localStorage.getItem("token");
-  const accessToken = token ? { Authorization: `Bearer ${token}` } : "";
+  const token = localStorage.getItem('token');
+  const accessToken = token ? { Authorization: `Bearer ${token}` } : '';
   const instance = axios.create({
     baseURL: url,
     headers: getHeader(accessToken),
