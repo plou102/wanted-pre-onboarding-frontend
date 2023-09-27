@@ -1,12 +1,17 @@
+import { TodoProvider } from 'context/TodoContext';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 function App() {
   return (
-    <MainContainer>
-      <Outlet />
-    </MainContainer>
+    <>
+      <TodoProvider>
+        <MainContainer>
+          <Outlet />
+        </MainContainer>
+      </TodoProvider>
+    </>
   );
 }
 

@@ -1,12 +1,12 @@
 import List from '../components/List';
-import { getTodo, postAddTodo } from '../api/requests';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import TodoContext from 'context/TodoContext';
 
 function TodoList() {
   const [listTitle, setListTitle] = useState('');
-  const [listData, setListData] = useState([]);
+  const { listData, AddTodo } = useContext(TodoContext);
   const navigate = useNavigate();
   const isToken = window.localStorage.getItem('token');
 
@@ -16,22 +16,17 @@ function TodoList() {
     }
   }, [isToken, navigate]);
 
-  useEffect(() => {
-    (async () => {
-      const list = await getTodo();
-      setListData(list);
-    })();
-  }, [listData]);
-
   function InputHandler(e) {
     setListTitle(e.target.value);
   }
 
-  async function AddTodoHandler(data) {
-    const todo = await postAddTodo(data);
-    if (todo) {
-      setListTitle('');
-    }
+  function AddTodoHandler() {
+    const data = {
+      todo: listTitle,
+    };
+
+    AddTodo(data);
+    setListTitle('');
   }
 
   return (
@@ -46,16 +41,7 @@ function TodoList() {
           placeholder="제목을 입력해 주세요."
           onChange={InputHandler}
         />
-        <AddBtn
-          data-testid="new-todo-add-button"
-          onClick={() => {
-            const data = {
-              todo: listTitle,
-            };
-
-            AddTodoHandler(data);
-          }}
-        >
+        <AddBtn data-testid="new-todo-add-button" onClick={AddTodoHandler}>
           추가
         </AddBtn>
       </InputContent>

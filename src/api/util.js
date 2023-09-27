@@ -19,13 +19,14 @@ function axiosApi(url, options) {
 
 function axiosTokenApi(url, options) {
   const token = localStorage.getItem('token');
-  const accessToken = token ? { Authorization: `Bearer ${token}` } : '';
+  const accessToken = token && { Authorization: `Bearer ${token}` };
   const instance = axios.create({
     baseURL: url,
     headers: getHeader(accessToken),
     ...options,
   });
-  return instance;
+
+  if (token) return instance;
 }
 
 export const defaultInstance = axiosApi(process.env.REACT_APP_BASE_URL);

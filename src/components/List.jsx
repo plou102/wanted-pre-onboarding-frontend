@@ -1,8 +1,9 @@
-import { deleteTodo, updateTodo } from '../api/requests';
-import React, { useEffect, useState } from 'react';
+import TodoContext from 'context/TodoContext';
+import React, { useContext, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 function List({ list }) {
+  const { DeleteTodo, UpdateTodo } = useContext(TodoContext);
   const [checkbox, setCheckbox] = useState(false);
   const [updateMode, setUpdateMode] = useState(false);
   const [todoTitle, setTodoTitle] = useState('');
@@ -12,31 +13,28 @@ function List({ list }) {
     setTodoTitle(list.todo);
   }, [list.isCompleted, list.todo]);
 
-  async function CheckboxHandler(e) {
+  function CheckboxHandler(e) {
     setCheckbox(e.target.checked);
 
     const data = {
       todo: list.todo,
       isCompleted: e.target.checked,
     };
-    await updateTodo(list.id, data);
-  }
 
-  async function DeleteHandler() {
-    await deleteTodo(list.id);
+    UpdateTodo(list.id, data);
   }
 
   function ModifyInputHandler(e) {
     setTodoTitle(e.target.value);
   }
 
-  async function SubmitHandler() {
+  function SubmitHandler() {
     const data = {
       todo: todoTitle,
       isCompleted: checkbox,
     };
 
-    await updateTodo(list.id, data);
+    UpdateTodo(list.id, data);
     setUpdateMode(false);
   }
 
@@ -51,7 +49,7 @@ function List({ list }) {
           onChange={e => ModifyInputHandler(e)}
         />
 
-        <UpdateBtn data-testid="submit-button" onClick={() => SubmitHandler()}>
+        <UpdateBtn data-testid="submit-button" onClick={SubmitHandler}>
           제출
         </UpdateBtn>
         <DeleteBtn
@@ -75,7 +73,7 @@ function List({ list }) {
       <UpdateBtn data-testid="modify-button" onClick={() => setUpdateMode(true)}>
         수정
       </UpdateBtn>
-      <DeleteBtn data-testid="delete-buttont" onClick={() => DeleteHandler()}>
+      <DeleteBtn data-testid="delete-buttont" onClick={() => DeleteTodo(list.id)}>
         삭제
       </DeleteBtn>
     </ListContent>
